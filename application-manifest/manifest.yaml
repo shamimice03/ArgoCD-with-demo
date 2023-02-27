@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: go-greetings-app
+  name: go-greetings-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: go-greetings-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: go-greetings-app
+    spec:
+      containers:
+      - image: shamimice03/go-greetings-app:18
+        name: go-greetings-app
+        resources: {}
+status: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lb-service
+  labels:
+    app: lb-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: go-greetings-app

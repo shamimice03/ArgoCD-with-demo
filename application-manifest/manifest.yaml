@@ -18,7 +18,7 @@ spec:
         app: go-greetings-app
     spec:
       containers:
-      - image: shamimice03/go-greetings-app:17
+      - image: shamimice03/go-greetings-app:18
         name: go-greetings-app
         resources: {}
 status: {}
